@@ -33,7 +33,12 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return const Scaffold(
       body: Center(
-        child: StopWatch(),
+        child: Padding(
+          padding: EdgeInsets.all(32.0),
+          child: AspectRatio(
+              aspectRatio: 1.0,
+              child: StopWatch()),
+        ),
       ),
     );
   }

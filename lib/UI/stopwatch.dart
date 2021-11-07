@@ -3,7 +3,10 @@
 import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:stopwatch/UI/elapsed_time_text.dart';
+import 'package:stopwatch/UI/stopwatch_render.dart';
 
 import 'elapsed_time_text_basics.dart';
 
@@ -14,36 +17,40 @@ class StopWatch extends StatefulWidget {
   _StopWatchState createState() => _StopWatchState();
 }
 
-class _StopWatchState extends State<StopWatch> {
+class _StopWatchState extends State<StopWatch> with SingleTickerProviderStateMixin {
 
-  late DateTime _initTime;
+
   Duration _elapsed =  Duration.zero;
-  late final Timer _timer;
+  late final Ticker  _ticker;
 
   @override
   void initState() {
 
-    _initTime = DateTime.now();
-   
-    _timer = Timer.periodic(const Duration(milliseconds: 50), (timer) {
-      var now = DateTime.now();
+    _ticker =  createTicker((elapsed) {
       setState(() {
-        _elapsed =  now.difference(_initTime);
+        _elapsed =  elapsed;
       });
     });
+    _ticker.start();
     super.initState();
   }
 
   @override
   void dispose() {
-    _timer.cancel();
+    _ticker.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return ElapsedTimeText(
-      elapsed: _elapsed,
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        var radius = constraints.maxWidth / 2.0;
+        return StopWatchRenderer(
+          elapsed: _elapsed,
+          radius: radius
+        );
+      }
     );
   }
 }
