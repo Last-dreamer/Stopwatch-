@@ -18,7 +18,7 @@ class ClockHand extends StatelessWidget {
   Widget build(BuildContext context) {
     return Transform(
       transform: Matrix4.identity()
-      ..translate(handThickness /2.0, 0.0, 0.0)
+      ..translate(handThickness / 2.0, 0.0, 0.0)
       ..rotateZ(rotationZAngle),
       child: Container(
         height: handLength,
