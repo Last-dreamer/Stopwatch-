@@ -46,7 +46,7 @@ class ClockMarkerTextCenter extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     const width = 30.0;
-    const height = 20.0;
+    const height = 30.0;
     return Transform(
       transform: Matrix4.identity()
         ..translate(0.0, 0.0, 0.0)
