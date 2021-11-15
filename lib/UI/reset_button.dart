@@ -17,6 +17,10 @@ class ResetButton extends StatelessWidget {
             alignment: Alignment.center,
             child: Text(
               "Reset",
+              style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold
+              ),
             ),
           ),
         ),

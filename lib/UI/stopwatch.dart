@@ -22,10 +22,10 @@ class StopWatch extends StatefulWidget {
 class _StopWatchState extends State<StopWatch>
     with SingleTickerProviderStateMixin {
 
-   Duration _preveslyElapsed = Duration.zero;
+   Duration _previouslyElapsed = Duration.zero;
    Duration _currentlyElapsed = Duration.zero;
 
-  Duration get _elapsed =>  _preveslyElapsed+ _currentlyElapsed;
+  Duration get _elapsed =>  _previouslyElapsed+ _currentlyElapsed;
   bool _isRunning = false;
   late final Ticker _ticker;
 
@@ -53,9 +53,17 @@ class _StopWatchState extends State<StopWatch>
         _ticker.start();
       }else{
         _ticker.stop();
-        _preveslyElapsed+= _currentlyElapsed;
+        _previouslyElapsed += _currentlyElapsed;
         _currentlyElapsed = Duration.zero;
       }
+    });
+  }
+
+  void stop(){
+    setState(() {
+      _isRunning = false;
+      _currentlyElapsed = Duration.zero;
+      _previouslyElapsed = Duration.zero;
     });
   }
 
@@ -73,7 +81,7 @@ class _StopWatchState extends State<StopWatch>
               width: 80,
               height: 80,
               child: ResetButton(
-                onPressed: () {},
+                onPressed: stop,
               ),
             ),
           ),
