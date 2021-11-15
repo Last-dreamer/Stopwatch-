@@ -36,7 +36,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Padding(
           padding: EdgeInsets.all(32.0),
           child: AspectRatio(
-              aspectRatio: 1.0,
+              aspectRatio: 0.88,
               child: StopWatch()),
         ),
       ),

@@ -15,14 +15,14 @@ class ClockMarkerText extends StatelessWidget {
   final double radius;
   @override
   Widget build(BuildContext context) {
-    const width = 35.0;
-    const height = 35.0;
+    const width = 30.0;
+    const height = 24.0;
     return Transform(
       transform: Matrix4.identity()
-        ..translate(-height/2, -height, 0.0)
+        ..translate(-height/2, -width/2.0, 0.0)
       ..rotateZ(pi + 2 * pi * (value / maxValue))
       ..translate(0.0, radius - 30.0, 0.0)
-      ..rotateZ(pi-2 sss* pi  * (value/maxValue)),
+      ..rotateZ(pi-2 * pi  * (value/maxValue)),
       child: SizedBox(
         width: width,
         height: height,

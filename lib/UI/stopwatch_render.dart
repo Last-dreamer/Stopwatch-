@@ -26,7 +26,7 @@ class StopWatchRenderer extends StatelessWidget {
               child: ClockSecondTickMarker(seconds: i, radius: radius)
           ),
 
-        //round  int plus 5
+        //round  int plus 5 with text
         for(var i=5;i<=60;i+=5)
           Positioned(
               left: radius,
